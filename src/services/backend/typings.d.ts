@@ -1,165 +1,161 @@
 declare namespace API {
-  type BaseResponseBoolean_ = {
+  type BaseResponseBoolean = {
     code?: number;
     data?: boolean;
     message?: string;
   };
 
-  type BaseResponseInt_ = {
+  type BaseResponseInteger = {
     code?: number;
     data?: number;
     message?: string;
   };
 
-  type BaseResponseLoginUserVO_ = {
+  type BaseResponseLoginUserVO = {
     code?: number;
     data?: LoginUserVO;
     message?: string;
   };
 
-  type BaseResponseLong_ = {
+  type BaseResponseLong = {
     code?: number;
     data?: string;
     message?: string;
   };
 
-  type BaseResponsePagePostVO_ = {
+  type BaseResponsePagePostVO = {
     code?: number;
-    data?: PagePostVO_;
+    data?: PagePostVO;
     message?: string;
   };
 
-  type BaseResponsePageUser_ = {
+  type BaseResponsePageUser = {
     code?: number;
-    data?: PageUser_;
+    data?: PageUser;
     message?: string;
   };
 
-  type BaseResponsePageUserVO_ = {
+  type BaseResponsePageUserVO = {
     code?: number;
-    data?: PageUserVO_;
+    data?: PageUserVO;
     message?: string;
   };
 
-  type BaseResponsePostVO_ = {
+  type BaseResponsePostVO = {
     code?: number;
     data?: PostVO;
     message?: string;
   };
 
-  type BaseResponseString_ = {
+  type BaseResponseString = {
     code?: number;
     data?: string;
     message?: string;
   };
 
-  type BaseResponseUser_ = {
+  type BaseResponseUser = {
     code?: number;
     data?: User;
     message?: string;
   };
 
-  type BaseResponseUserVO_ = {
+  type BaseResponseUserVO = {
     code?: number;
     data?: UserVO;
     message?: string;
   };
 
-  type checkUsingGETParams = {
-    /** echostr */
-    echostr?: string;
-    /** nonce */
-    nonce?: string;
-    /** signature */
-    signature?: string;
-    /** timestamp */
-    timestamp?: string;
+  type checkParams = {
+    timestamp: string;
+    nonce: string;
+    signature: string;
+    echostr: string;
   };
 
   type DeleteRequest = {
     id?: string;
   };
 
-  type getPostVOByIdUsingGETParams = {
-    /** id */
-    id?: string;
+  type getPostVOByIdParams = {
+    id: string;
   };
 
-  type getUserByIdUsingGETParams = {
-    /** id */
-    id?: string;
+  type getUserByIdParams = {
+    id: string;
   };
 
-  type getUserVOByIdUsingGETParams = {
-    /** id */
-    id?: string;
+  type getUserVOByIdParams = {
+    id: string;
   };
 
   type LoginUserVO = {
-    createTime?: string;
     id?: string;
-    updateTime?: string;
-    userAvatar?: string;
     userName?: string;
+    userAvatar?: string;
     userProfile?: string;
     userRole?: string;
+    createTime?: string;
+    updateTime?: string;
   };
 
   type OrderItem = {
-    asc?: boolean;
     column?: string;
+    asc?: boolean;
   };
 
-  type PagePostVO_ = {
-    countId?: string;
-    current?: string;
-    maxLimit?: string;
-    optimizeCountSql?: boolean;
-    orders?: OrderItem[];
-    pages?: string;
+  type PagePostVO = {
     records?: PostVO[];
-    searchCount?: boolean;
-    size?: string;
     total?: string;
+    size?: string;
+    current?: string;
+    orders?: OrderItem[];
+    optimizeCountSql?: boolean;
+    searchCount?: boolean;
+    optimizeJoinOfCountSql?: boolean;
+    countId?: string;
+    maxLimit?: string;
+    pages?: string;
   };
 
-  type PageUser_ = {
-    countId?: string;
-    current?: string;
-    maxLimit?: string;
-    optimizeCountSql?: boolean;
-    orders?: OrderItem[];
-    pages?: string;
+  type PageUser = {
     records?: User[];
-    searchCount?: boolean;
-    size?: string;
     total?: string;
+    size?: string;
+    current?: string;
+    orders?: OrderItem[];
+    optimizeCountSql?: boolean;
+    searchCount?: boolean;
+    optimizeJoinOfCountSql?: boolean;
+    countId?: string;
+    maxLimit?: string;
+    pages?: string;
   };
 
-  type PageUserVO_ = {
-    countId?: string;
-    current?: string;
-    maxLimit?: string;
-    optimizeCountSql?: boolean;
-    orders?: OrderItem[];
-    pages?: string;
+  type PageUserVO = {
     records?: UserVO[];
-    searchCount?: boolean;
-    size?: string;
     total?: string;
+    size?: string;
+    current?: string;
+    orders?: OrderItem[];
+    optimizeCountSql?: boolean;
+    searchCount?: boolean;
+    optimizeJoinOfCountSql?: boolean;
+    countId?: string;
+    maxLimit?: string;
+    pages?: string;
   };
 
   type PostAddRequest = {
+    title?: string;
     content?: string;
     tags?: string[];
-    title?: string;
   };
 
   type PostEditRequest = {
-    content?: string;
     id?: string;
-    tags?: string[];
     title?: string;
+    content?: string;
+    tags?: string[];
   };
 
   type PostFavourAddRequest = {
@@ -169,26 +165,26 @@ declare namespace API {
   type PostFavourQueryRequest = {
     current?: string;
     pageSize?: string;
-    postQueryRequest?: PostQueryRequest;
     sortField?: string;
     sortOrder?: string;
+    postQueryRequest?: PostQueryRequest;
     userId?: string;
   };
 
   type PostQueryRequest = {
-    content?: string;
     current?: string;
-    favourUserId?: string;
-    id?: string;
-    notId?: string;
-    orTags?: string[];
     pageSize?: string;
-    searchText?: string;
     sortField?: string;
     sortOrder?: string;
-    tags?: string[];
+    id?: string;
+    notId?: string;
+    searchText?: string;
     title?: string;
+    content?: string;
+    tags?: string[];
+    orTags?: string[];
     userId?: string;
+    favourUserId?: string;
   };
 
   type PostThumbAddRequest = {
@@ -196,55 +192,58 @@ declare namespace API {
   };
 
   type PostUpdateRequest = {
-    content?: string;
     id?: string;
-    tags?: string[];
     title?: string;
+    content?: string;
+    tags?: string[];
   };
 
   type PostVO = {
-    content?: string;
-    createTime?: string;
-    favourNum?: number;
-    hasFavour?: boolean;
-    hasThumb?: boolean;
     id?: string;
-    tagList?: string[];
-    thumbNum?: number;
     title?: string;
-    updateTime?: string;
-    user?: UserVO;
+    content?: string;
+    thumbNum?: number;
+    favourNum?: number;
     userId?: string;
+    createTime?: string;
+    updateTime?: string;
+    tagList?: string[];
+    user?: UserVO;
+    hasThumb?: boolean;
+    hasFavour?: boolean;
   };
 
-  type uploadFileUsingPOSTParams = {
+  type uploadFileParams = {
+    uploadFileRequest: UploadFileRequest;
+  };
+
+  type UploadFileRequest = {
     biz?: string;
   };
 
   type User = {
-    createTime?: string;
     id?: string;
-    isDelete?: number;
-    mpOpenId?: string;
-    unionId?: string;
-    updateTime?: string;
     userAccount?: string;
-    userAvatar?: string;
-    userName?: string;
     userPassword?: string;
+    unionId?: string;
+    mpOpenId?: string;
+    userName?: string;
+    userAvatar?: string;
     userProfile?: string;
     userRole?: string;
+    createTime?: string;
+    updateTime?: string;
+    isDelete?: number;
   };
 
   type UserAddRequest = {
+    userName?: string;
     userAccount?: string;
     userAvatar?: string;
-    userName?: string;
     userRole?: string;
   };
 
-  type userLoginByWxOpenUsingGETParams = {
-    /** code */
+  type userLoginByWxOpenParams = {
     code: string;
   };
 
@@ -255,43 +254,43 @@ declare namespace API {
 
   type UserQueryRequest = {
     current?: string;
-    id?: string;
-    mpOpenId?: string;
     pageSize?: string;
     sortField?: string;
     sortOrder?: string;
+    id?: string;
     unionId?: string;
+    mpOpenId?: string;
     userName?: string;
     userProfile?: string;
     userRole?: string;
   };
 
   type UserRegisterRequest = {
-    checkPassword?: string;
     userAccount?: string;
     userPassword?: string;
+    checkPassword?: string;
   };
 
   type UserUpdateMyRequest = {
-    userAvatar?: string;
     userName?: string;
+    userAvatar?: string;
     userProfile?: string;
   };
 
   type UserUpdateRequest = {
     id?: string;
-    userAvatar?: string;
     userName?: string;
+    userAvatar?: string;
     userProfile?: string;
     userRole?: string;
   };
 
   type UserVO = {
-    createTime?: string;
     id?: string;
-    userAvatar?: string;
     userName?: string;
+    userAvatar?: string;
     userProfile?: string;
     userRole?: string;
+    createTime?: string;
   };
 }

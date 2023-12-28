@@ -9,10 +9,10 @@ import * as postThumbController from './postThumbController';
 import * as userController from './userController';
 import * as wxMpController from './wxMpController';
 export default {
-  wxMpController,
-  fileController,
-  postController,
-  postFavourController,
-  postThumbController,
   userController,
+  postThumbController,
+  postFavourController,
+  postController,
+  fileController,
+  wxMpController,
 };

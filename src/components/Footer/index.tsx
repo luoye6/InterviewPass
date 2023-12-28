@@ -3,31 +3,28 @@ import { DefaultFooter } from '@ant-design/pro-components';
 import '@umijs/max';
 import React from 'react';
 const Footer: React.FC = () => {
-  const defaultMessage = '蚂蚁集团体验技术部出品';
+  const defaultMessage = '程序员小白条';
   const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
-      style={{
-        background: 'none',
-      }}
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {
-          key: 'Ant Design Pro',
-          title: 'Ant Design Pro',
-          href: 'https://pro.ant.design',
+          key: 'gitee',
+          title: 'Gitee',
+          href: 'https://gitee.com/falle22222n-leaves',
+          blankTarget: true,
+        },
+        {
+          key: 'library',
+          title: 'GPT 智能图书馆',
+          href: 'https://www.xiaobaitiao.top/#/login',
           blankTarget: true,
         },
         {
           key: 'github',
-          title: <GithubOutlined />,
-          href: 'https://github.com/ant-design/ant-design-pro',
-          blankTarget: true,
-        },
-        {
-          key: 'Ant Design',
-          title: 'Ant Design',
-          href: 'https://ant.design',
+          title: <><GithubOutlined /> 程序员小白条</>,
+          href: 'https://github.com/luoye6',
           blankTarget: true,
         },
       ]}
