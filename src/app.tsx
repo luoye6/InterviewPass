@@ -21,15 +21,18 @@ export async function getInitialState(): Promise<InitialState> {
   const { location } = history;
   if (!location.pathname.startsWith(loginPath)) {
     // // 获取当前登录用户
-    // const res = await getLoginUser();
-    // initialState.currentUser = res.data;
-
-    const mockUser: API.LoginUserVO = {
-      userAvatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
-      userName: 'xiaobaitiao',
-      userRole: 'admin',
-    };
-    initialState.currentUser = mockUser;
+    try{
+      const res = await getLoginUser();
+      initialState.currentUser = res.data;
+    }catch (error:any){
+      // 如果未登录
+    }
+    // const mockUser: API.LoginUserVO = {
+    //   userAvatar: 'https://gw.alipayobjects.com/zos/rmsportal/BiazfanxmamNRoxxVxka.png',
+    //   userName: 'xiaobaitiao',
+    //   userRole: 'admin',
+    // };
+    // initialState.currentUser = currentUser;
   }
   return initialState;
 }
