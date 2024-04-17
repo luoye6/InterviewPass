@@ -7,6 +7,9 @@ const Footer: React.FC = () => {
   const currentYear = new Date().getFullYear();
   return (
     <DefaultFooter
+      style={
+        {background:"none"}
+      }
       copyright={`${currentYear} ${defaultMessage}`}
       links={[
         {

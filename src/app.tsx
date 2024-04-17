@@ -1,10 +1,10 @@
 import Footer from '@/components/Footer';
+import { getLoginUser } from '@/services/backend/userController';
 import type { RunTimeLayoutConfig } from '@umijs/max';
 import { history } from '@umijs/max';
+import defaultSettings from '../config/defaultSettings';
 import { AvatarDropdown } from './components/RightContent/AvatarDropdown';
 import { requestConfig } from './request';
-import defaultSettings from '../config/defaultSettings';
-import {getLoginUser} from "@/services/backend/userController";
 
 const isDev = process.env.NODE_ENV === 'development';
 const loginPath = '/user/login';
@@ -21,10 +21,10 @@ export async function getInitialState(): Promise<InitialState> {
   const { location } = history;
   if (!location.pathname.startsWith(loginPath)) {
     // // 获取当前登录用户
-    try{
+    try {
       const res = await getLoginUser();
       initialState.currentUser = res.data;
-    }catch (error:any){
+    } catch (error: any) {
       // 如果未登录
     }
     // const mockUser: API.LoginUserVO = {
@@ -42,9 +42,9 @@ export async function getInitialState(): Promise<InitialState> {
 export const layout: RunTimeLayoutConfig = ({ initialState }) => {
   return {
     avatarProps: {
-     render:()=>{
-       return <AvatarDropdown />
-     }
+      render: () => {
+        return <AvatarDropdown />;
+      },
     },
     waterMarkProps: {
       content: initialState?.currentUser?.userName,
@@ -54,8 +54,9 @@ export const layout: RunTimeLayoutConfig = ({ initialState }) => {
     // 自定义 403 页面
     // unAccessible: <div>unAccessible</div>,
     // 增加一个 loading 的状态
-
-   ...defaultSettings
+    // 关闭根据菜单和路径来匹配浏览器标题
+    pageTitleRender: false,
+    ...defaultSettings,
   };
 };
 

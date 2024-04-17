@@ -4,7 +4,8 @@
 export default function access(initialState: InitialState) {
   const { currentUser } = initialState ?? {};
   return {
-    canUser: currentUser,
     canAdmin: currentUser?.userRole === 'admin',
+    canUser: currentUser,
+
   };
 }

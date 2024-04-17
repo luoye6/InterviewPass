@@ -7,6 +7,7 @@ import { Helmet, history, useModel } from '@umijs/max';
 import { message, Tabs } from 'antd';
 import React, { useState } from 'react';
 import Settings from '../../../../config/defaultSettings';
+import {currentUser} from "@/services/ant-design-pro/api";
 
 const Login: React.FC = () => {
   const [type, setType] = useState<string>('account');
@@ -29,6 +30,7 @@ const Login: React.FC = () => {
       const res = await userLogin({
         ...values,
       });
+      console.log(res);
       const defaultLoginSuccessMessage = '登录成功！';
       message.success(defaultLoginSuccessMessage);
       // 保存已登录用户信息
@@ -36,6 +38,7 @@ const Login: React.FC = () => {
         ...initialState,
         currentUser: res.data,
       });
+      console.log(currentUser);
       const urlParams = new URL(window.location.href).searchParams;
       history.push(urlParams.get('redirect') || '/');
       return;
@@ -49,7 +52,7 @@ const Login: React.FC = () => {
     <div className={containerClassName}>
       <Helmet>
         <title>
-          {'登录'}- {Settings.title}
+          {Settings.title}
         </title>
       </Helmet>
       <div
